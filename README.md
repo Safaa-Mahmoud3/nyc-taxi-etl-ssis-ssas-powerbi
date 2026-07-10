@@ -1,8 +1,10 @@
 # 🚕 NYC Taxi: From ETL to Power BI
 ### End-to-End Business Intelligence Solution using SSIS, SSAS Tabular & Power BI
 
+![Status](https://img.shields.io/badge/status-completed-brightgreen)
 ![Tools](https://img.shields.io/badge/tools-SSIS%20%7C%20SSAS%20%7C%20Power%20BI%20%7C%20DAX-blue)
 ![Rows](https://img.shields.io/badge/rows_processed-549%2C760-orange)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 ---
 
@@ -84,12 +86,18 @@ Three layered databases orchestrate the pipeline:
 
 **A. ODS Package** — Loads raw Yellow Taxi CSV (549,760 rows) and Zone Lookup CSV (265 rows) directly into the operational store.
 
+![ODS Package](screenshots/ssis_ods_package.png)
+
 **B. STG Package** — Applies business rules and cleaning logic:
 - Calculates trip duration, handles negative financial values, resolves invalid placeholder codes
 - Conditional Split separates valid trips from invalid ones
 - **Result:** 528,441 valid rows → `STG_YellowTaxi` | 21,319 invalid rows → `STG_InvalidTrips`
 
+![STG Package](screenshots/ssis_stg_package.png)
+
 **C. DWH Package** — Loads dimensions first (static + `DimLocation`), then loads `FactTrips` using Lookup transformations to resolve foreign keys (`VendorKey`, `RateCodeKey`, `PaymentTypeKey`, `LocationKey` for both Pickup and Dropoff) against the dimension tables.
+
+![DWH Package](screenshots/ssis_dwh_package.png)
 
 ---
 
@@ -103,6 +111,8 @@ Built using **SSAS Tabular Model** with the **xVelocity in-memory engine** for f
 - Revenue by Borough, Avg Trip Duration by Borough, Avg Speed (mph)
 - Trips by Dropoff Zone, Revenue by Dropoff Borough (using `USERELATIONSHIP`)
 
+![SSAS Model Diagram](screenshots/ssas_model_diagram.png)
+
 ---
 
 ## 📊 Power BI Dashboard
@@ -111,17 +121,39 @@ A 4-page interactive report connects directly to the Data Warehouse, featuring a
 
 ### Page 1 — Executive Overview
 KPIs: **528K Total Trips**, **$9.92M Total Revenue**, **$13.50 Avg Fare/Trip**, **4.25 mi Avg Trip Distance**. Includes trips by vendor, payment type breakdown, and a daily trips/revenue trend for June 2020.
-- Drill-through: **Vendor Performance Deep-Dive** — Revenue per Mile by Rate Code, Tip % by Time Period, Payment Type mix per vendor.
+
+![Executive Overview](screenshots/dashboard_executive_overview.png)
+
+**Filter Panel** — Users can filter the entire view by any date or dimension to see localized performance.
+
+![Filter Panel](screenshots/dashboard_filter_panel.png)
+
+**Insights Toggle** — Clicking the lightbulb icon triggers a pop-up with a quick, auto-generated business summary of the page.
+
+![Insights Toggle](screenshots/dashboard_insights_toggle.png)
+
+**Drill-through: Vendor Performance Deep-Dive** — Right-clicking any vendor unlocks an operational efficiency dashboard tracking Revenue per Mile, Tip Percentages, and Preferred Payment Methods.
+
+![Vendor Drill-through](screenshots/dashboard_vendor_drillthrough.png)
 
 ### Page 2 — Time & Demand Patterns
 Weekend vs. Weekday trip volume (103K vs. 426K, **19.5% weekend share**), trips by time period, a day-of-week demand curve, and an hour × day heatmap of trip volume.
 
+![Time & Demand Patterns](screenshots/dashboard_time_demand.png)
+
 ### Page 3 — Revenue & Pricing Deep Dive
 Revenue per Mile by Rate Code, Tip % by Vendor, Tips Analysis by Payment Type, and Total Amount breakdown by payment method.
 
+![Revenue & Pricing Deep Dive](screenshots/dashboard_revenue_pricing.png)
+
 ### Page 4 — Geography
 Tree-map of trip distribution across NYC boroughs, average trip duration by borough, and Top 5 pickup zones.
-- Drill-through: **Borough → Zone** deep-dive (e.g., Manhattan: 13.0 min avg duration, $11.18 avg fare, top zones like Upper East Side).
+
+![Geography](screenshots/dashboard_geography.png)
+
+**Drill-through: Borough → Zone** — Clicking into a borough (e.g., Manhattan) reveals Avg Trip Duration (13.0 min), Avg Fare per Trip ($11.18), Avg Trip Distance (3.28 mi), and a full zone-level breakdown.
+
+![Geography Drill-through](screenshots/dashboard_geography_drillthrough.png)
 
 ---
 
@@ -144,17 +176,19 @@ nyc-taxi-etl-ssis-ssas-powerbi/
 ├── README.md
 ├── docs/
 │   └── NYC_Taxi_Technical_Documentation.pdf
-├── screenshots/
-   ├── ssis_ods_package.png
-   ├── ssis_stg_package.png
-   ├── ssis_dwh_package.png
-   ├── ssas_model_diagram.png
-   ├── dashboard_executive_overview.png
-   ├── dashboard_time_demand.png
-   ├── dashboard_revenue_pricing.png
-   └── dashboard_geography.png
-
-  
+└── screenshots/
+    ├── ssis_ods_package.png
+    ├── ssis_stg_package.png
+    ├── ssis_dwh_package.png
+    ├── ssas_model_diagram.png
+    ├── dashboard_executive_overview.png
+    ├── dashboard_filter_panel.png
+    ├── dashboard_insights_toggle.png
+    ├── dashboard_vendor_drillthrough.png
+    ├── dashboard_time_demand.png
+    ├── dashboard_revenue_pricing.png
+    ├── dashboard_geography.png
+    └── dashboard_geography_drillthrough.png
 ```
 
 ---
@@ -162,3 +196,4 @@ nyc-taxi-etl-ssis-ssas-powerbi/
 ## 👩‍💻 Author
 
 **Safaa Mahmoud**
+Data Analytics Trainee | Aspiring Data Engineer
