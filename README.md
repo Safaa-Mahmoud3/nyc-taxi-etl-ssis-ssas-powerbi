@@ -153,8 +153,8 @@ nyc-taxi-etl-ssis-ssas-powerbi/
 │   ├── dashboard_time_demand.png
 │   ├── dashboard_revenue_pricing.png
 │   └── dashboard_geography.png
-└── powerbi/
-    └── NYC_Taxi_Dashboard.pbix
+
+  
 ```
 
 ---
@@ -162,4 +162,3 @@ nyc-taxi-etl-ssis-ssas-powerbi/
 ## 👩‍💻 Author
 
 **Safaa Mahmoud**
-Data Analytics Trainee | Aspiring Data Engineer
