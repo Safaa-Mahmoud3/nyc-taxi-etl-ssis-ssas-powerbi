@@ -145,14 +145,14 @@ nyc-taxi-etl-ssis-ssas-powerbi/
 ├── docs/
 │   └── NYC_Taxi_Technical_Documentation.pdf
 ├── screenshots/
-│   ├── ssis_ods_package.png
-│   ├── ssis_stg_package.png
-│   ├── ssis_dwh_package.png
-│   ├── ssas_model_diagram.png
-│   ├── dashboard_executive_overview.png
-│   ├── dashboard_time_demand.png
-│   ├── dashboard_revenue_pricing.png
-│   └── dashboard_geography.png
+   ├── ssis_ods_package.png
+   ├── ssis_stg_package.png
+   ├── ssis_dwh_package.png
+   ├── ssas_model_diagram.png
+   ├── dashboard_executive_overview.png
+   ├── dashboard_time_demand.png
+   ├── dashboard_revenue_pricing.png
+   └── dashboard_geography.png
 
   
 ```
