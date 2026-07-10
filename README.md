@@ -1,7 +1,6 @@
 # 🚕 NYC Taxi: From ETL to Power BI
 ### End-to-End Business Intelligence Solution using SSIS, SSAS Tabular & Power BI
 
-![Status](https://img.shields.io/badge/status-completed-brightgreen)
 ![Tools](https://img.shields.io/badge/tools-SSIS%20%7C%20SSAS%20%7C%20Power%20BI%20%7C%20DAX-blue)
 ![Rows](https://img.shields.io/badge/rows_processed-549%2C760-orange)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
